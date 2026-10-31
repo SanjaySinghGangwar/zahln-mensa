@@ -226,6 +226,7 @@ function RefundForm({ detail, userId, onCreated }: { detail: PaymentDetail; user
         label={t('refund.amount', { max })}
         value={amount}
         onChangeText={setAmount}
+        testID="refund-amount"
         keyboardType="decimal-pad"
         accessibilityHint={invalid ? t('refund.invalid', { max }) : undefined}
       />
@@ -240,6 +241,7 @@ function RefundForm({ detail, userId, onCreated }: { detail: PaymentDetail; user
         </Notice>
       )}
       <Button
+        testID="refund-submit"
         kind="danger"
         label={unknown ? t('refund.retry') : t('refund.submit', { amount: cents !== null && !invalid ? formatCents(cents) : '' })}
         onPress={submit}

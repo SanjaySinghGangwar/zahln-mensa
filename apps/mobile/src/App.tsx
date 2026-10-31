@@ -4,6 +4,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { t } from '@zahln/core';
 import { useLanguage } from '@zahln/core/react';
 import { AuthProvider, useAuth } from './auth';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Badge, Button, LanguageToggle } from './components/ui';
 import { LoginScreen } from './LoginScreen';
 import { PayerHome } from './payer/PayerHome';
@@ -48,11 +49,13 @@ function Root() {
             </View>
           </View>
           <View style={styles.body}>
-            {session.user.role === 'cashier' ? (
-              <TillHome key={session.user.id} user={session.user} />
-            ) : (
-              <PayerHome key={session.user.id} user={session.user} onLocked={logout} />
-            )}
+            <ErrorBoundary key={session.user.id}>
+              {session.user.role === 'cashier' ? (
+                <TillHome user={session.user} />
+              ) : (
+                <PayerHome user={session.user} onLocked={logout} />
+              )}
+            </ErrorBoundary>
           </View>
         </>
       ) : (

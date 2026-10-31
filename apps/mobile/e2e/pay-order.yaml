@@ -7,9 +7,11 @@ appId: de.zahln.mensa
     clearState: true
 - tapOn: "English"
 - tapOn: "student"
+- scrollUntilVisible:
+    element:
+      id: "login-submit"
 - tapOn:
-    text: "Sign in"
-    index: 1
+    id: "login-submit"
 - extendedWaitUntil:
     visible: "Pay at the till"
     timeout: 60000
@@ -17,7 +19,11 @@ appId: de.zahln.mensa
 - extendedWaitUntil:
     visible: "Student price"
     timeout: 60000
-- tapOn: "Pay .*"
+- scrollUntilVisible:
+    element:
+      id: "pay-button"
+- tapOn:
+    id: "pay-button"
 - extendedWaitUntil:
     visible: "Set a 4-digit PIN"
     timeout: 20000
@@ -29,3 +35,7 @@ appId: de.zahln.mensa
 - extendedWaitUntil:
     visible: "Paid .*|Payment declined"
     timeout: 150000
+- runFlow: retry-if-declined.yaml
+- runFlow: retry-if-declined.yaml
+- runFlow: retry-if-declined.yaml
+- assertVisible: "Paid .*"

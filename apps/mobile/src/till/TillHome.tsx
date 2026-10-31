@@ -156,7 +156,9 @@ export function TillHome({ user }: { user: User }) {
         <TillOrder
           key={order.id}
           initial={order}
-          onOrderChange={(o) => writeCache(orderKey, o)}
+          onOrderChange={(o) => {
+            writeCache(orderKey, o);
+          }}
           onNewOrder={newOrder}
           onRingAgain={ringAgain}
           onOpenPayment={(id) => setScreen({ kind: 'payment', id })}
@@ -234,6 +236,7 @@ export function TillHome({ user }: { user: User }) {
             </Notice>
           )}
           <Button
+            testID="ring-up"
             big
             kind="primary"
             label={submitting ? t('till.creating') : submitError ? t('common.retry') : t('till.ringUp')}

@@ -1,0 +1,28 @@
+# Till: after the phone paid, the till switches to Paid on its own (no tap needed),
+# then the cashier refunds part of the payment and sees it complete.
+appId: de.zahln.mensa
+---
+- extendedWaitUntil:
+    visible: "Paid"
+    timeout: 120000
+- tapOn: "View payment"
+- scrollUntilVisible:
+    element:
+      id: "refund-amount"
+- tapOn:
+    id: "refund-amount"
+- eraseText: 10
+- inputText: "0,50"
+# No hideKeyboard: on Android it presses Back, which leaves the screen.
+- scrollUntilVisible:
+    element:
+      id: "refund-submit"
+- tapOn:
+    id: "refund-submit"
+- extendedWaitUntil:
+    visible: "Refund requested.*|This refund had already been submitted.*"
+    timeout: 120000
+- scrollUntilVisible:
+    element:
+      text: "Completed|Failed"
+    timeout: 120000

@@ -6,16 +6,22 @@ appId: de.zahln.mensa
     clearState: true
 - tapOn: "English"
 - tapOn: "cashier-campus-1"
+- scrollUntilVisible:
+    element:
+      id: "login-submit"
 - tapOn:
-    text: "Sign in"
-    index: 1
+    id: "login-submit"
 - extendedWaitUntil:
     visible: "Menu"
     timeout: 60000
 - tapOn:
     text: "Add one .*"
     index: 0
-- tapOn: "Ring up & show QR"
+- scrollUntilVisible:
+    element:
+      id: "ring-up"
+- tapOn:
+    id: "ring-up"
 - extendedWaitUntil:
     visible: "Scan with the Zahln app to pay"
     timeout: 60000

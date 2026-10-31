@@ -1,0 +1,20 @@
+# The test server declines some payments on purpose. A decline frees the order: pay again.
+appId: de.zahln.mensa
+---
+- runFlow:
+    when:
+      visible: "Payment declined"
+    commands:
+      - tapOn: "Try again"
+      - scrollUntilVisible:
+          element:
+            id: "pay-button"
+      - tapOn:
+          id: "pay-button"
+      - extendedWaitUntil:
+          visible: "Enter your PIN"
+          timeout: 20000
+      - inputText: "1234"
+      - extendedWaitUntil:
+          visible: "Paid .*|Payment declined"
+          timeout: 150000

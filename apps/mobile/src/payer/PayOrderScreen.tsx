@@ -263,6 +263,7 @@ export function PayOrderScreen({ orderId, user, config, refreshConfig, onClose, 
                 </Notice>
               )}
               <Button
+                testID="pay-button"
                 big
                 kind="primary"
                 label={paying ? t('pay.paying') : t('pay.payButton', { amount: formatCents(order.amountCents) })}

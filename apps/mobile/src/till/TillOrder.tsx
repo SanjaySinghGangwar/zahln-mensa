@@ -60,7 +60,9 @@ export function TillOrder({ initial, onOrderChange, onNewOrder, onRingAgain, onO
   // Keep the till's saved copy current, so a restart resumes this order.
   const changeRef = useRef(onOrderChange);
   changeRef.current = onOrderChange;
-  useEffect(() => changeRef.current(order), [order]);
+  useEffect(() => {
+    changeRef.current(order);
+  }, [order]);
 
   // Once paid, read the payment to show the amount and price group that was charged.
   useEffect(() => {
@@ -123,7 +125,8 @@ export function TillOrder({ initial, onOrderChange, onNewOrder, onRingAgain, onO
     );
   }
 
-  const qrSize = Math.min(wide ? height * 0.6 : width - 2 * space.xl - 2 * space.lg, 420);
+  // Fit the QR on screen under the header in both orientations.
+  const qrSize = Math.max(200, Math.min(wide ? height - 420 : width - 2 * space.xl - 2 * space.lg, 420));
 
   return (
     <ScrollView contentContainerStyle={[styles.wrap, wide && styles.wide]}>

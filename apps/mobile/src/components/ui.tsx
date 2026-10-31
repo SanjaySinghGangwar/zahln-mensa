@@ -52,7 +52,9 @@ export function Button({
   accessibilityLabel,
   accessibilityHint,
   style,
+  testID,
 }: {
+  testID?: string;
   label: string;
   onPress: () => void;
   kind?: ButtonKind;
@@ -67,6 +69,7 @@ export function Button({
   const k = buttonKinds[kind];
   return (
     <Pressable
+      testID={testID}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel ?? label}
       accessibilityHint={accessibilityHint}

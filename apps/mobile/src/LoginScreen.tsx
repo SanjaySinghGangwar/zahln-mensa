@@ -80,7 +80,7 @@ export function LoginScreen() {
           <Field label={t('login.password')} value={password} onChangeText={setPassword} secureTextEntry autoComplete="current-password" onSubmitEditing={submit} />
 
           {error !== null && <ErrorNotice error={error} />}
-          <Button big kind="primary" label={busy ? t('login.busy') : t('login.submit')} busy={busy} onPress={submit} disabled={!username} />
+          <Button testID="login-submit" big kind="primary" label={busy ? t('login.busy') : t('login.submit')} busy={busy} onPress={submit} disabled={!username} />
         </Card>
       </ScrollView>
     </KeyboardAvoidingView>
