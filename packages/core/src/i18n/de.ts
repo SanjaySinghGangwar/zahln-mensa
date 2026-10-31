@@ -89,6 +89,7 @@ export const de: Record<MessageKey, string> = {
   'error.payment_not_refundable': 'Diese Zahlung kann nicht erstattet werden. Nur bestätigte Zahlungen sind erstattbar.',
   'error.refund_window_closed': 'Erstattungen sind nur innerhalb von 30 Tagen nach der Zahlung möglich.',
   'error.generic': 'Etwas ist schiefgelaufen.',
+  'error.screenCrashed': 'Dieser Bildschirm funktioniert nicht mehr. Ihre Zahlungen sind sicher auf dem Server – tippen Sie, um ihn neu zu öffnen.',
   'error.unknownOutcome': 'Wir konnten nicht bestätigen, ob es geklappt hat.',
 
   'pay.hello': 'Hallo, {name}',

@@ -89,6 +89,7 @@ export const en = {
   'error.payment_not_refundable': 'This payment cannot be refunded. Only confirmed payments can be refunded.',
   'error.refund_window_closed': 'Refunds are only possible within 30 days of the payment.',
   'error.generic': 'Something went wrong.',
+  'error.screenCrashed': 'This screen stopped working. Your payments are safe on the server — tap to open it again.',
   'error.unknownOutcome': 'We could not confirm whether it went through.',
 
   'pay.hello': 'Hi, {name}',

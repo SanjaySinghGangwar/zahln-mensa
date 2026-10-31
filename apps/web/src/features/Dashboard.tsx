@@ -341,7 +341,9 @@ export function CsvExport({ query }: { query: PaymentQuery }) {
 
   useEffect(() => () => abortRef.current?.abort(), []);
   // A finished export belongs to the old filter.
-  useEffect(() => setResult(null), [query]);
+  useEffect(() => {
+    setResult(null);
+  }, [query]);
 
   async function run() {
     const controller = new AbortController();
