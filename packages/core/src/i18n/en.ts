@@ -14,6 +14,8 @@ export const en = {
   'common.cancel': 'Cancel',
   'common.loading': 'Loading…',
   'common.logout': 'Log out',
+  'common.skip': 'Skip to content',
+  'common.home': 'home',
   'common.connectionIssue': 'Connection problems — showing the last known state. Still checking…',
   'common.stale': 'Offline copy from {time}. The server could not be reached.',
   'common.offline': 'You are offline. Showing saved data; nothing is sent until you are back online.',

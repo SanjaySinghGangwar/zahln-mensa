@@ -37,10 +37,10 @@ export default function App() {
   return (
     <div className="app">
       <a className="skip-link" href="#main">
-        Skip to content
+        {t('common.skip')}
       </a>
       <header className="topbar">
-        <a className="brand brand-home" href="/" onClick={goHome} aria-label={`${t('app.name')} — home`} title="Home">
+        <a className="brand brand-home" href="/" onClick={goHome} aria-label={`${t('app.name')} — ${t('common.home')}`} title={t('common.home')}>
           <span className="brand-mark" aria-hidden="true">
             Z
           </span>{' '}

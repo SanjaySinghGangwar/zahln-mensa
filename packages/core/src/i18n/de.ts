@@ -14,6 +14,8 @@ export const de: Record<MessageKey, string> = {
   'common.cancel': 'Abbrechen',
   'common.loading': 'Wird geladen…',
   'common.logout': 'Abmelden',
+  'common.skip': 'Zum Inhalt springen',
+  'common.home': 'Startseite',
   'common.connectionIssue': 'Verbindungsprobleme – letzter bekannter Stand. Wird weiter geprüft…',
   'common.stale': 'Offline-Kopie von {time}. Der Server war nicht erreichbar.',
   'common.offline': 'Sie sind offline. Gespeicherte Daten werden angezeigt; nichts wird gesendet, bis Sie wieder online sind.',
