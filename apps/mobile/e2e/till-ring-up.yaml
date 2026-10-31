@@ -1,0 +1,21 @@
+# Till: sign in as a cashier, ring up one dish and show the QR.
+# Run: maestro --device <tablet> test e2e/till-ring-up.yaml
+appId: de.zahln.mensa
+---
+- launchApp:
+    clearState: true
+- tapOn: "English"
+- tapOn: "cashier-campus-1"
+- tapOn:
+    text: "Sign in"
+    index: 1
+- extendedWaitUntil:
+    visible: "Menu"
+    timeout: 60000
+- tapOn:
+    text: "Add one .*"
+    index: 0
+- tapOn: "Ring up & show QR"
+- extendedWaitUntil:
+    visible: "Scan with the Zahln app to pay"
+    timeout: 60000

@@ -1,0 +1,31 @@
+# Student app: open the order from the till's QR link, confirm with the app PIN, see the result.
+# The order ID is read from the till screen and passed in: maestro test -e ORDER=ord_… e2e/pay-order.yaml
+# Uses an emulator without a screen lock, so the app asks for its own PIN (1234).
+appId: de.zahln.mensa
+---
+- launchApp:
+    clearState: true
+- tapOn: "English"
+- tapOn: "student"
+- tapOn:
+    text: "Sign in"
+    index: 1
+- extendedWaitUntil:
+    visible: "Pay at the till"
+    timeout: 60000
+- openLink: "zahln://pay?order=${ORDER}"
+- extendedWaitUntil:
+    visible: "Student price"
+    timeout: 60000
+- tapOn: "Pay .*"
+- extendedWaitUntil:
+    visible: "Set a 4-digit PIN"
+    timeout: 20000
+- inputText: "1234"
+- extendedWaitUntil:
+    visible: "Repeat the PIN"
+    timeout: 10000
+- inputText: "1234"
+- extendedWaitUntil:
+    visible: "Paid .*|Payment declined"
+    timeout: 150000

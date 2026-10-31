@@ -1,0 +1,66 @@
+{
+  "expo": {
+    "name": "Zahln Mensa",
+    "slug": "zahln-mensa",
+    "version": "1.0.0",
+    "scheme": "zahln",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#f7f5f0",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "de.zahln.mensa"
+    },
+    "android": {
+      "package": "de.zahln.mensa",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#1f1f1f",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.USE_BIOMETRIC"
+      ],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.SYSTEM_ALERT_WINDOW"
+      ],
+      "allowBackup": false,
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
+          "resizeMode": "contain",
+          "backgroundColor": "#1f1f1f"
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Zahln uses the camera to scan the QR code at the till.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": true
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Zahln uses Face ID to confirm payments."
+        }
+      ],
+      "expo-secure-store",
+      "expo-sqlite",
+      "expo-localization",
+      "./plugins/withReleaseSigning"
+    ]
+  }
+}
