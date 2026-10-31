@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState, type ComponentRef } from 'react';
 import { AccessibilityInfo, Modal, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { t } from '@zahln/core';
 import { Button, H2, Muted, Notice } from '../components/ui';
+import { useKeyboardInset } from '../platform/keyboard';
 import { colors, space, TOUCH } from '../theme';
 import { checkPin, hasPin, setPin } from './confirm';
 
@@ -28,6 +30,9 @@ export function PinSheet({
   const [message, setMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const inputRef = useRef<ComponentRef<typeof TextInput>>(null);
+  // The sheet sits on top of the keyboard and clear of the navigation bar.
+  const insets = useSafeAreaInsets();
+  const keyboard = useKeyboardInset();
 
   useEffect(() => {
     void hasPin(userId).then((has) => setPhase(has ? 'enter' : 'setup'));
@@ -75,9 +80,9 @@ export function PinSheet({
   const title = phase === 'enter' ? t('pay.pinEnter') : phase === 'repeat' ? t('pay.pinRepeat') : t('pay.pinSetupTitle');
 
   return (
-    <Modal transparent animationType="slide" onRequestClose={() => onDone(false)} statusBarTranslucent>
-      <View style={styles.backdrop}>
-        <View style={styles.sheet} accessibilityViewIsModal>
+    <Modal transparent animationType="fade" onRequestClose={() => onDone(false)} statusBarTranslucent navigationBarTranslucent>
+      <View style={[styles.backdrop, { paddingTop: insets.top }]}>
+        <View style={[styles.sheet, { paddingBottom: Math.max(keyboard, insets.bottom) + space.lg }]} accessibilityViewIsModal>
           <H2>{t('pay.confirmTitle', { amount })}</H2>
           <Text style={styles.title}>{title}</Text>
           {phase === 'setup' && <Muted>{t('pay.pinSetupHint')}</Muted>}
@@ -91,6 +96,7 @@ export function PinSheet({
               if (digits.length === 4) void submit(digits);
             }}
             keyboardType="number-pad"
+            inputMode="numeric"
             secureTextEntry
             maxLength={4}
             autoComplete="off"

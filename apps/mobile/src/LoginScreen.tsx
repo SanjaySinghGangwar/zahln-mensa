@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { t } from '@zahln/core';
 import { useAuth } from './auth';
 import { Button, Card, ErrorNotice, Field, H1, LanguageToggle, Muted, Notice } from './components/ui';
@@ -35,7 +35,7 @@ export function LoginScreen() {
   }
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+    <View style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.wrap} keyboardShouldPersistTaps="handled">
         <View style={styles.top}>
           <View style={styles.brand} accessible accessibilityRole="header" accessibilityLabel="Zahln Mensa">
@@ -83,7 +83,7 @@ export function LoginScreen() {
           <Button testID="login-submit" big kind="primary" label={busy ? t('login.busy') : t('login.submit')} busy={busy} onPress={submit} disabled={!username} />
         </Card>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
 
