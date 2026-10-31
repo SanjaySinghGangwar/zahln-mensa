@@ -87,6 +87,17 @@ The full reasoning is in [DESIGN.md](DESIGN.md). In short:
 | `apps/mobile` | App PIN (hashing, lockout), confirmation method | Vitest |
 | `apps/mobile/e2e` | Till ring-up and a full payment on two emulators | Maestro |
 
+### Tested on
+
+| Device | What |
+|---|---|
+| POCO C71 (Unisoc T7250, Android 15) — a low-end phone | cold start ≈ 0.7 s, ≈ 72 MB memory, deep link to the pay screen, screen-reader labels on every control |
+| POCO X3 (Android 12), no screen lock | camera scan of a real till QR, student price, app PIN set-up and confirm, **Paid** — confirmed on the server |
+| Samsung Galaxy S22 Ultra (Android 16) | install and start |
+| Pixel Tablet + Pixel phone emulators | full Maestro run: ring up → pay → till shows Paid → partial refund completes |
+
+Testing on real phones found two bugs that are fixed: the language buttons were smaller than 48 dp, and with Android's edge-to-edge layout the PIN sheet sat behind the keyboard.
+
 CI (`.github/workflows/ci.yml`) typechecks, runs all unit tests with coverage and builds the dashboard on every push.
 
 ## What I left out, and why
