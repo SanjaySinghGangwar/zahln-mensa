@@ -1,0 +1,22 @@
+{
+  "name": "zahln-mensa",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Zahln mensa payments: student app + till (Expo) and Studierendenwerk dashboard (React), sharing one core.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:coverage": "npm run test:coverage --workspaces --if-present",
+    "web": "npm run dev -w @zahln/web",
+    "mobile": "npm run start -w @zahln/mobile"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.9",
+    "typescript": "~6.0.3",
+    "vitest": "^2.1.9"
+  }
+}
