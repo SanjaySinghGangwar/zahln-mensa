@@ -262,7 +262,7 @@ export const styles = StyleSheet.create({
   tabText: { fontSize: 15, color: colors.muted, fontWeight: '600' },
   tabTextOn: { color: colors.text },
   lang: { flexDirection: 'row', borderWidth: 1, borderColor: colors.line, borderRadius: 999, overflow: 'hidden' },
-  langBtn: { minWidth: TOUCH, minHeight: 36, alignItems: 'center', justifyContent: 'center', paddingHorizontal: space.sm },
+  langBtn: { minWidth: TOUCH, minHeight: TOUCH, alignItems: 'center', justifyContent: 'center', paddingHorizontal: space.sm },
   langText: { fontSize: 13, fontWeight: '700' },
   row: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6, gap: space.md },
   rowLabel: { color: colors.muted, fontSize: 15 },
